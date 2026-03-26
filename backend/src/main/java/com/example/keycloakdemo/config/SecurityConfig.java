@@ -2,7 +2,6 @@ package com.example.keycloakdemo.config;
 
 import com.example.keycloakdemo.config.security.KeycloakRoleConverter;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.example.keycloakdemo.dto.ErrorResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,10 +18,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper()
-                .registerModule(new JavaTimeModule());
-
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, ObjectMapper objectMapper) throws Exception {
         http
             // Stateless JWT 인증 방식이므로 세션 쿠키를 사용하지 않아 CSRF 공격 벡터 없음
             .csrf(csrf -> csrf.disable())
