@@ -196,33 +196,77 @@ log.error("failed_token_inspection reason={}", message, ex);
 ## Implementation TODO
 
 ### Phase 1: Keycloak 환경
-- [ ] `docker-compose.yml` 작성 (postgres + keycloak, healthcheck 포함)
-- [ ] `keycloak/realm-export.json` 작성 (Realm/Client/Role/User 자동 프로비저닝)
-- [ ] `docker compose up keycloak` 실행 확인 + curl로 토큰 발급 테스트
-- [ ] realm-export.json import 실패 시 확인 방법 문서화 (`docker logs keycloak | grep -i import`)
+- [X] `docker-compose.yml` 작성 (postgres + keycloak, healthcheck 포함)
+- [X] `keycloak/realm-export.json` 작성 (Realm/Client/Role/User 자동 프로비저닝)
+- [ ] `docker compose up keycloak` 실행 확인 + curl로 토큰 발급 테스트 ← 실제 컨테이너 실행 필요
+- [X] realm-export.json import 실패 시 확인 방법 문서화 (`docker logs keycloak | grep -i import`)
 
 ### Phase 2: Spring Boot 뼈대 (Java Coding Standards 준수)
-- [ ] Gradle 프로젝트 생성 (`com.example.keycloakdemo`)
-- [ ] `application.yml` + `application-local.yml` 설정 (Keycloak `issuer-uri` / `jwk-set-uri`)
-- [ ] `constant/Roles.java` 작성 — Role 문자열 상수 정의
-- [ ] `config/security/KeycloakRoleConverter.java` 작성 (재활용 단위로 분리)
-- [ ] `SecurityConfig.java` 작성 (경로 권한만, Keycloak 설정은 `KeycloakRoleConverter` 위임)
-- [ ] `PublicController.java` → `/api/public/health` 동작 확인
+- [X] Gradle 프로젝트 생성 (`com.example.keycloakdemo`)
+- [X] `application.yml` + `application-local.yml` 설정 (Keycloak `issuer-uri` / `jwk-set-uri`)
+- [X] `constant/Roles.java` 작성 — Role 문자열 상수 정의
+- [X] `config/security/KeycloakRoleConverter.java` 작성 (재활용 단위로 분리)
+- [X] `SecurityConfig.java` 작성 (경로 권한만, Keycloak 설정은 `KeycloakRoleConverter` 위임)
+- [X] `PublicController.java` → `/api/public/health` 동작 확인
 
 ### Phase 3: 서비스 레이어 + 인증 연동
-- [ ] `UserInfoService.java` 작성 — JWT → `UserInfoResponse` record 변환, SLF4J 로깅
-- [ ] `TokenInspectionService.java` 작성 — JWT claims 추출, `InvalidTokenException` 처리
-- [ ] `GlobalExceptionHandler.java` 작성 — `@RestControllerAdvice`, 예외 → 표준 응답
-- [ ] `UserController.java` 작성 + `UserControllerTest.java` (MockMvc, 401/200)
-- [ ] `ManagerController.java`, `AdminController.java` 작성
-- [ ] `TokenController.java` 작성
-- [ ] RBAC 매트릭스 테스트 (401/403/200 curl로 확인)
+- [X] `UserInfoService.java` 작성 — JWT → `UserInfoResponse` record 변환, SLF4J 로깅
+- [X] `TokenInspectionService.java` 작성 — JWT claims 추출, `InvalidTokenException` 처리
+- [X] `GlobalExceptionHandler.java` 작성 — `@RestControllerAdvice`, 예외 → 표준 응답
+- [X] `UserController.java` 작성 + `UserControllerTest.java` (MockMvc, 401/200)
+- [X] `ManagerController.java`, `AdminController.java` 작성
+- [X] `TokenController.java` 작성
+- [ ] RBAC 매트릭스 테스트 (401/403/200 curl로 확인) ← 실제 컨테이너 실행 필요
 
 ### Phase 4: 테스트 완성
-- [ ] `UserInfoServiceTest.java` — JUnit5 + AssertJ + Mockito
-- [ ] `UserControllerTest.java` — `@WithMockUser(roles="USER")` 403/200 분기
+- [X] `UserInfoServiceTest.java` — JUnit5 + AssertJ + Mockito
+- [X] `UserControllerTest.java` — `@WithMockUser(roles="USER")` 403/200 분기
+- [X] `ManagerControllerTest.java`, `AdminControllerTest.java` — RBAC 401/403/200 분기
+- [X] `TokenInspectionServiceTest.java`, `TokenControllerTest.java`
 
 ### Phase 5: Docker 통합
-- [ ] `backend/Dockerfile` 작성 (multi-stage: builder + runtime)
-- [ ] `docker-compose.yml` backend 서비스 추가 (`depends_on: keycloak: condition: service_healthy`)
-- [ ] `docker compose up` 전체 통합 실행 테스트
+- [X] `backend/Dockerfile` 작성 (multi-stage: builder + runtime)
+- [X] `docker-compose.yml` backend 서비스 추가 (`depends_on: keycloak: condition: service_healthy`)
+- [ ] `docker compose up` 전체 통합 실행 테스트 ← 실제 컨테이너 실행 필요
+
+---
+
+## 구현 완료 상태 (2026-03-23)
+
+### 완료된 항목
+
+| 파일 | 상태 |
+|------|------|
+| `backend/build.gradle`, `settings.gradle` | ✓ |
+| `backend/Dockerfile` | ✓ |
+| `backend/src/main/resources/application.yml` | ✓ |
+| `backend/src/main/resources/application-local.yml` | ✓ |
+| `docker-compose.yml` | ✓ |
+| `keycloak/realm-export.json` | ✓ |
+| `.env`, `.env.example` | ✓ |
+| `KeycloakDemoApplication.java` | ✓ |
+| `constant/Roles.java` | ✓ |
+| `config/security/KeycloakRoleConverter.java` | ✓ |
+| `config/SecurityConfig.java` | ✓ |
+| `dto/ApiResponse.java`, `ErrorResponse.java` | ✓ |
+| `dto/UserInfoResponse.java`, `DashboardResponse.java` | ✓ |
+| `exception/InvalidTokenException.java` | ✓ |
+| `exception/GlobalExceptionHandler.java` | ✓ |
+| `service/UserInfoService.java` | ✓ |
+| `service/TokenInspectionService.java` | ✓ |
+| `controller/PublicController.java` | ✓ |
+| `controller/UserController.java` | ✓ |
+| `controller/ManagerController.java` | ✓ |
+| `controller/AdminController.java` | ✓ |
+| `controller/TokenController.java` | ✓ |
+| 테스트: PublicControllerTest, UserControllerTest | ✓ |
+| 테스트: ManagerControllerTest, AdminControllerTest | ✓ |
+| 테스트: UserInfoServiceTest | ✓ |
+| 테스트: TokenInspectionServiceTest, TokenControllerTest | ✓ |
+| `specs/001-keycloak-setup/quickstart.md` | ✓ |
+
+### 잔여 항목 (실제 컨테이너 실행 필요)
+
+- `docker compose up keycloak` 후 토큰 발급 curl 테스트
+- `docker compose up` 전체 통합 실행 테스트
+- RBAC 매트릭스 curl 검증

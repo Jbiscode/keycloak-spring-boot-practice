@@ -17,10 +17,10 @@
 
 **Purpose**: 모든 스토리에 필요한 프로젝트 구조와 학습용 문서 골격을 준비한다
 
-- [ ] T001 `backend/build.gradle`, `backend/settings.gradle`에 Gradle 프로젝트 설정을 작성한다
-- [ ] T002 Spring Boot 시작 클래스를 `backend/src/main/java/com/example/keycloakdemo/KeycloakDemoApplication.java`에 작성한다
-- [ ] T003 [P] `.env`에 로컬 환경 기본값을 작성한다
-- [ ] T004 [P] `specs/001-keycloak-setup/quickstart.md`에 학습자용 실행 가이드 초안을 작성한다
+- [X] T001 `backend/build.gradle`, `backend/settings.gradle`에 Gradle 프로젝트 설정을 작성한다
+- [X] T002 Spring Boot 시작 클래스를 `backend/src/main/java/com/example/keycloakdemo/KeycloakDemoApplication.java`에 작성한다
+- [X] T003 [P] `.env`에 로컬 환경 기본값을 작성한다
+- [X] T004 [P] `specs/001-keycloak-setup/quickstart.md`에 학습자용 실행 가이드 초안을 작성한다
 
 ---
 
@@ -30,14 +30,14 @@
 
 **⚠️ CRITICAL**: 이 단계가 끝나기 전에는 어떤 사용자 스토리도 시작하지 않는다
 
-- [ ] T005 `backend/src/main/resources/application.yml`, `backend/src/main/resources/application-local.yml`에 `issuer-uri`와 로컬 설정을 구성한다
-- [ ] T006 [P] `backend/src/main/java/com/example/keycloakdemo/constant/Roles.java`에 공통 role 상수를 정의한다
-- [ ] T007 [P] `backend/src/main/java/com/example/keycloakdemo/config/security/KeycloakRoleConverter.java`에 Keycloak JWT authority 매핑을 구현한다
-- [ ] T008 경로 보안 정책, JWT converter 연결, 401/403 처리를 `backend/src/main/java/com/example/keycloakdemo/config/SecurityConfig.java`에 구현한다
-- [ ] T009 [P] `backend/src/main/java/com/example/keycloakdemo/dto/ApiResponse.java`, `backend/src/main/java/com/example/keycloakdemo/dto/ErrorResponse.java`에 공통 응답 record를 작성한다
-- [ ] T010 [P] `backend/src/main/java/com/example/keycloakdemo/exception/InvalidTokenException.java`, `backend/src/main/java/com/example/keycloakdemo/exception/GlobalExceptionHandler.java`에 토큰 예외와 전역 예외 처리를 구현한다
-- [ ] T011 [P] `backend/Dockerfile`에 백엔드 컨테이너 이미지 빌드 구성을 추가한다
-- [ ] T012 hostname, issuer, role naming 규칙을 `specs/001-keycloak-setup/quickstart.md`에 문서화한다
+- [X] T005 `backend/src/main/resources/application.yml`, `backend/src/main/resources/application-local.yml`에 `issuer-uri`와 로컬 설정을 구성한다
+- [X] T006 [P] `backend/src/main/java/com/example/keycloakdemo/constant/Roles.java`에 공통 role 상수를 정의한다
+- [X] T007 [P] `backend/src/main/java/com/example/keycloakdemo/config/security/KeycloakRoleConverter.java`에 Keycloak JWT authority 매핑을 구현한다
+- [X] T008 경로 보안 정책, JWT converter 연결, 401/403 처리를 `backend/src/main/java/com/example/keycloakdemo/config/SecurityConfig.java`에 구현한다
+- [X] T009 [P] `backend/src/main/java/com/example/keycloakdemo/dto/ApiResponse.java`, `backend/src/main/java/com/example/keycloakdemo/dto/ErrorResponse.java`에 공통 응답 record를 작성한다
+- [X] T010 [P] `backend/src/main/java/com/example/keycloakdemo/exception/InvalidTokenException.java`, `backend/src/main/java/com/example/keycloakdemo/exception/GlobalExceptionHandler.java`에 토큰 예외와 전역 예외 처리를 구현한다
+- [X] T011 [P] `backend/Dockerfile`에 백엔드 컨테이너 이미지 빌드 구성을 추가한다
+- [X] T012 hostname, issuer, role naming 규칙을 `specs/001-keycloak-setup/quickstart.md`에 문서화한다
 
 **Checkpoint**: 공통 보안 기반이 준비되어 이후 스토리를 우선순위대로 진행할 수 있어야 한다
 
@@ -51,10 +51,10 @@
 
 ### Implementation for User Story 1
 
-- [ ] T013 [US1] `docker-compose.yml`에 PostgreSQL과 Keycloak 서비스 및 readiness check를 구성한다
-- [ ] T014 [P] [US1] `keycloak/realm-export.json`에 Realm, client, role, demo user를 정의한다
-- [ ] T015 [US1] `specs/001-keycloak-setup/quickstart.md`에 토큰 발급 및 JWT decode 절차를 추가한다
-- [ ] T016 [US1] `specs/001-keycloak-setup/quickstart.md`에 import 실패 확인 방법과 기동 기대 결과를 정리한다
+- [X] T013 [US1] `docker-compose.yml`에 PostgreSQL과 Keycloak 서비스 및 readiness check를 구성한다
+- [X] T014 [P] [US1] `keycloak/realm-export.json`에 Realm, client, role, demo user를 정의한다
+- [X] T015 [US1] `specs/001-keycloak-setup/quickstart.md`에 토큰 발급 및 JWT decode 절차를 추가한다
+- [X] T016 [US1] `specs/001-keycloak-setup/quickstart.md`에 import 실패 확인 방법과 기동 기대 결과를 정리한다
 
 **Checkpoint**: Keycloak이 단독으로 기동되고 학습자가 검증 가능한 토큰을 발급할 수 있어야 한다
 
@@ -70,16 +70,16 @@
 
 > **NOTE: 테스트를 먼저 작성하고, 구현 전 실패 상태를 확인한다**
 
-- [ ] T017 [P] [US2] `backend/src/test/java/com/example/keycloakdemo/controller/PublicControllerTest.java`, `backend/src/test/java/com/example/keycloakdemo/controller/UserControllerTest.java`에 public/authenticated controller 테스트를 추가한다
-- [ ] T018 [P] [US2] `backend/src/test/java/com/example/keycloakdemo/service/UserInfoServiceTest.java`에 JWT → 응답 변환 테스트를 추가한다
-- [ ] T019 [US2] `specs/001-keycloak-setup/quickstart.md`에 이 스토리의 검증 명령을 정리한다
+- [X] T017 [P] [US2] `backend/src/test/java/com/example/keycloakdemo/controller/PublicControllerTest.java`, `backend/src/test/java/com/example/keycloakdemo/controller/UserControllerTest.java`에 public/authenticated controller 테스트를 추가한다
+- [X] T018 [P] [US2] `backend/src/test/java/com/example/keycloakdemo/service/UserInfoServiceTest.java`에 JWT → 응답 변환 테스트를 추가한다
+- [X] T019 [US2] `specs/001-keycloak-setup/quickstart.md`에 이 스토리의 검증 명령을 정리한다
 
 ### Implementation for User Story 2
 
-- [ ] T020 [P] [US2] `backend/src/main/java/com/example/keycloakdemo/dto/UserInfoResponse.java`에 사용자 정보 응답 record를 작성한다
-- [ ] T021 [US2] `backend/src/main/java/com/example/keycloakdemo/service/UserInfoService.java`에 JWT 사용자 정보 변환 서비스를 구현한다
-- [ ] T022 [US2] `backend/src/main/java/com/example/keycloakdemo/controller/PublicController.java`에 public health 엔드포인트를 구현한다
-- [ ] T023 [US2] `backend/src/main/java/com/example/keycloakdemo/controller/UserController.java`에 인증 사용자 엔드포인트를 구현한다
+- [X] T020 [P] [US2] `backend/src/main/java/com/example/keycloakdemo/dto/UserInfoResponse.java`에 사용자 정보 응답 record를 작성한다
+- [X] T021 [US2] `backend/src/main/java/com/example/keycloakdemo/service/UserInfoService.java`에 JWT 사용자 정보 변환 서비스를 구현한다
+- [X] T022 [US2] `backend/src/main/java/com/example/keycloakdemo/controller/PublicController.java`에 public health 엔드포인트를 구현한다
+- [X] T023 [US2] `backend/src/main/java/com/example/keycloakdemo/controller/UserController.java`에 인증 사용자 엔드포인트를 구현한다
 
 **Checkpoint**: public 엔드포인트와 authenticated 엔드포인트가 독립적으로 검증 가능해야 한다
 
@@ -93,14 +93,14 @@
 
 ### Tests for User Story 3
 
-- [ ] T024 [P] [US3] `backend/src/test/java/com/example/keycloakdemo/controller/ManagerControllerTest.java`, `backend/src/test/java/com/example/keycloakdemo/controller/AdminControllerTest.java`에 RBAC controller 테스트를 추가한다
-- [ ] T025 [US3] `specs/001-keycloak-setup/quickstart.md`에 RBAC 검증 명령을 정리한다
+- [X] T024 [P] [US3] `backend/src/test/java/com/example/keycloakdemo/controller/ManagerControllerTest.java`, `backend/src/test/java/com/example/keycloakdemo/controller/AdminControllerTest.java`에 RBAC controller 테스트를 추가한다
+- [X] T025 [US3] `specs/001-keycloak-setup/quickstart.md`에 RBAC 검증 명령을 정리한다
 
 ### Implementation for User Story 3
 
-- [ ] T026 [P] [US3] `backend/src/main/java/com/example/keycloakdemo/dto/DashboardResponse.java`에 admin dashboard 응답 record를 작성한다
-- [ ] T027 [US3] `backend/src/main/java/com/example/keycloakdemo/controller/ManagerController.java`에 manager 전용 엔드포인트를 구현한다
-- [ ] T028 [US3] `backend/src/main/java/com/example/keycloakdemo/controller/AdminController.java`에 admin 전용 엔드포인트를 구현한다
+- [X] T026 [P] [US3] `backend/src/main/java/com/example/keycloakdemo/dto/DashboardResponse.java`에 admin dashboard 응답 record를 작성한다
+- [X] T027 [US3] `backend/src/main/java/com/example/keycloakdemo/controller/ManagerController.java`에 manager 전용 엔드포인트를 구현한다
+- [X] T028 [US3] `backend/src/main/java/com/example/keycloakdemo/controller/AdminController.java`에 admin 전용 엔드포인트를 구현한다
 
 **Checkpoint**: 역할 기반 접근 제어가 인증 기능을 깨지 않고 독립적으로 검증 가능해야 한다
 
@@ -114,13 +114,13 @@
 
 ### Tests for User Story 4
 
-- [ ] T029 [P] [US4] `backend/src/test/java/com/example/keycloakdemo/service/TokenInspectionServiceTest.java`, `backend/src/test/java/com/example/keycloakdemo/controller/TokenControllerTest.java`에 token inspection 테스트를 추가한다
-- [ ] T030 [US4] `specs/001-keycloak-setup/quickstart.md`에 token inspection 검증 명령을 정리한다
+- [X] T029 [P] [US4] `backend/src/test/java/com/example/keycloakdemo/service/TokenInspectionServiceTest.java`, `backend/src/test/java/com/example/keycloakdemo/controller/TokenControllerTest.java`에 token inspection 테스트를 추가한다
+- [X] T030 [US4] `specs/001-keycloak-setup/quickstart.md`에 token inspection 검증 명령을 정리한다
 
 ### Implementation for User Story 4
 
-- [ ] T031 [US4] `backend/src/main/java/com/example/keycloakdemo/service/TokenInspectionService.java`에 token inspection 서비스를 구현한다
-- [ ] T032 [US4] `backend/src/main/java/com/example/keycloakdemo/controller/TokenController.java`에 token inspection 엔드포인트를 구현한다
+- [X] T031 [US4] `backend/src/main/java/com/example/keycloakdemo/service/TokenInspectionService.java`에 token inspection 서비스를 구현한다
+- [X] T032 [US4] `backend/src/main/java/com/example/keycloakdemo/controller/TokenController.java`에 token inspection 엔드포인트를 구현한다
 
 **Checkpoint**: 모든 사용자 스토리가 독립적으로 동작하고 검증 가능해야 한다
 
@@ -130,10 +130,10 @@
 
 **Purpose**: 전체 흐름 검증, 문서 정리, 구현 책임 분리 점검을 마친다
 
-- [ ] T033 전체 컨테이너 통합 실행 절차와 기대 결과를 `specs/001-keycloak-setup/quickstart.md`에 반영한다
-- [ ] T034 [P] `specs/001-keycloak-setup/spec.md`, `specs/001-keycloak-setup/contracts/api.md`, `specs/001-keycloak-setup/research.md`의 정합성을 최종 점검한다
-- [ ] T035 [P] `backend/src/main/java/com/example/keycloakdemo/config/SecurityConfig.java`, `backend/src/main/java/com/example/keycloakdemo/config/security/KeycloakRoleConverter.java`, `backend/src/main/java/com/example/keycloakdemo/service/UserInfoService.java`, `backend/src/main/java/com/example/keycloakdemo/service/TokenInspectionService.java`의 책임 분리가 계획과 맞는지 점검한다
-- [ ] T036 백엔드 테스트 및 검증 상태를 `specs/001-keycloak-setup/plan.md`에 기록한다
+- [X] T033 전체 컨테이너 통합 실행 절차와 기대 결과를 `specs/001-keycloak-setup/quickstart.md`에 반영한다
+- [X] T034 [P] `specs/001-keycloak-setup/spec.md`, `specs/001-keycloak-setup/contracts/api.md`, `specs/001-keycloak-setup/research.md`의 정합성을 최종 점검한다
+- [X] T035 [P] `backend/src/main/java/com/example/keycloakdemo/config/SecurityConfig.java`, `backend/src/main/java/com/example/keycloakdemo/config/security/KeycloakRoleConverter.java`, `backend/src/main/java/com/example/keycloakdemo/service/UserInfoService.java`, `backend/src/main/java/com/example/keycloakdemo/service/TokenInspectionService.java`의 책임 분리가 계획과 맞는지 점검한다
+- [X] T036 백엔드 테스트 및 검증 상태를 `specs/001-keycloak-setup/plan.md`에 기록한다
 
 ---
 
