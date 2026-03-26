@@ -31,7 +31,11 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- P1 learning flow is identified and can be demonstrated before lower-priority work.
+- Local environment is reproducible from committed files and documented commands.
+- Auth boundaries are explicit for every planned route or component.
+- Each story has executable verification commands; automated tests are listed where feasible.
+- New abstractions are justified as simpler or more reusable than direct implementation.
 
 ## Project Structure
 

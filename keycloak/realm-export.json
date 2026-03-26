@@ -1,0 +1,114 @@
+{
+  "realm": "demo",
+  "enabled": true,
+  "displayName": "Demo Realm",
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": false,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": true,
+  "failureFactor": 5,
+  "waitIncrementSeconds": 60,
+  "maxFailureWaitSeconds": 900,
+  "accessTokenLifespan": 300,
+  "roles": {
+    "realm": [
+      {
+        "name": "ROLE_USER",
+        "description": "기본 보호 API 접근",
+        "composite": false,
+        "clientRole": false
+      },
+      {
+        "name": "ROLE_MANAGER",
+        "description": "관리자 목록 조회",
+        "composite": false,
+        "clientRole": false
+      },
+      {
+        "name": "ROLE_ADMIN",
+        "description": "관리자 대시보드 접근",
+        "composite": false,
+        "clientRole": false
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "demo-app",
+      "name": "Demo App",
+      "enabled": true,
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "redirectUris": ["http://localhost:8081/*"],
+      "webOrigins": ["http://localhost:8081"],
+      "protocol": "openid-connect"
+    },
+    {
+      "clientId": "demo-service",
+      "name": "Demo Service",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "demo-service-secret",
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "standardFlowEnabled": false,
+      "protocol": "openid-connect"
+    }
+  ],
+  "users": [
+    {
+      "username": "testuser",
+      "email": "testuser@example.com",
+      "emailVerified": true,
+      "enabled": true,
+      "firstName": "Test",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "user1234",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["ROLE_USER", "default-roles-demo"]
+    },
+    {
+      "username": "testmanager",
+      "email": "testmanager@example.com",
+      "emailVerified": true,
+      "enabled": true,
+      "firstName": "Test",
+      "lastName": "Manager",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "manager1234",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["ROLE_USER", "ROLE_MANAGER", "default-roles-demo"]
+    },
+    {
+      "username": "testadmin",
+      "email": "testadmin@example.com",
+      "emailVerified": true,
+      "enabled": true,
+      "firstName": "Test",
+      "lastName": "Admin",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin1234",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["ROLE_USER", "ROLE_MANAGER", "ROLE_ADMIN", "default-roles-demo"]
+    }
+  ]
+}

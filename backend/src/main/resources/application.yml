@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: keycloak-demo
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI:http://localhost:8080/realms/demo}
+
+server:
+  port: ${SERVER_PORT:8081}
+
+logging:
+  level:
+    root: INFO
+    com.example.keycloakdemo: INFO
+    org.springframework.security: INFO
