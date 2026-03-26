@@ -1,0 +1,7 @@
+.git/
+build/
+out/
+.gradle/
+*.log
+.env*
+src/test/
